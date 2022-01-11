@@ -1,0 +1,18 @@
+body{
+background-color : black;
+color : #fff;
+}
+
+body a{
+    color: #fff;
+}
+
+.alert{
+    background-color: indigo;
+    padding: 10px;
+}
+
+.alert-header{
+    background-color:red;
+    padding: 10px;
+}
