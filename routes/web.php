@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\HomeController; 
 use App\Http\Controllers\AboutController; 
+use App\Http\Controllers\ProfileInformationController; 
 
 // // Route::get('/', function () {
 // //     // penggunaan compact : compact key value nya harus sama, misalnya :
@@ -32,3 +33,5 @@ Route::get('/', HomeController::class);
 
 Route::get('/about', [AboutController::class, 'index']);
 Route::post('/about', [AboutController::class, 'store']);
+
+Route::get('/profile/{identifier}', [ProfileInformationController::class, '__invoke']);
