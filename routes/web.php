@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\HomeController; 
 use App\Http\Controllers\AboutController; 
 use App\Http\Controllers\ProfileInformationController; 
+use App\Http\Controllers\TaskController; 
 
 // // Route::get('/', function () {
 // //     // penggunaan compact : compact key value nya harus sama, misalnya :
@@ -35,3 +36,9 @@ Route::get('/about', [AboutController::class, 'index']);
 Route::post('/about', [AboutController::class, 'store']);
 
 Route::get('/profile/{identifier}', [ProfileInformationController::class, '__invoke']);
+
+Route::get('/task', [TaskController::class, 'index']);
+Route::post('/task', [TaskController::class, 'store']);
+Route::get('/task/edit/{id}', [TaskController::class, 'edit']);
+Route::put('/task/{id}', [TaskController::class, 'update']);
+Route::delete('/task/{id}', [TaskController::class, 'destroy']);
