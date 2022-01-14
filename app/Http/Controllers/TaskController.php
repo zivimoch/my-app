@@ -18,28 +18,31 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        $data = ['task' => $request->task];
-        $insert = DB::table('task')->insert($data);
+        $data = ['task' => $request->task], 'mark'=> rand(0,1);
+        // $insert = Task::insert($data); //ini akan return true or false
+        $insert = Task::create($data); //ini akan return data inputannya tapi nanti di modelnya harus ditambahin variable protected $guarded = [];
 
         return back(); //redirect->back() atau redirect('kesini lagi')
     }
 
     public function edit($id)
     {
-        $task = DB::table('task')->where('id', $id)->first();
+        // $task = Task::where('id', $id)->first();
+        $task = Task::find($id); //ini khusus untuk id
         return view('task.edit', compact('task'));
     }
 
     public function update(Request $request, $id)
     {
-        DB::table('task')->where('id',$id)->update(['task' => $request->task]);
+        // Task::where('id',$id)->update(['task' => $request->task]);
+        Task::find($id)->update(['task' => $request->task, 'mark'=> rand(0,1)]);
         return redirect('/task');
     }
 
     public function destroy($id)
     {
         // $data = DB::table('task')->where('id', $id)->delete();
-        $data = Task::table('task')->where('id', $id)->delete();
+        $data = Task::find($id)->delete();
         // $data->delete();
         return redirect('/task');
     }
