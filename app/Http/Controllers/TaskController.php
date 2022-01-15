@@ -18,7 +18,7 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        $data = ['task' => $request->task], 'mark'=> rand(0,1);
+        $data = ['task' => $request->task, 'mark'=> rand(0,1)];
         // $insert = Task::insert($data); //ini akan return true or false
         $insert = Task::create($data); //ini akan return data inputannya tapi nanti di modelnya harus ditambahin variable protected $guarded = [];
 

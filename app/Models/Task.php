@@ -9,5 +9,6 @@ class Task extends Model
 {
     use HasFactory;
     protected $table = 'tasks';
-    protected $guarded = [];
+    // protected $guarded = []; kalo guarded tuh field2 apa aja yang gak boleh. tapi daripada pake guard mending pake fillable karna kita tau apa aja yang boleh diisi
+    protected $fillable = ['task'];
 }
