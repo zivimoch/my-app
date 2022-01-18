@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController; 
 use App\Http\Controllers\ProfileInformationController; 
 use App\Http\Controllers\TaskController; 
+use App\Http\Controllers\UserController; 
 
 // // Route::get('/', function () {
 // //     // penggunaan compact : compact key value nya harus sama, misalnya :
@@ -37,8 +38,12 @@ Route::post('/about', [AboutController::class, 'store']);
 
 Route::get('/profile/{identifier}', [ProfileInformationController::class, '__invoke']);
 
-Route::get('/task', [TaskController::class, 'index']);
-Route::post('/task', [TaskController::class, 'store']);
-Route::get('/task/edit/{id}', [TaskController::class, 'edit']);
-Route::put('/task/{id}', [TaskController::class, 'update']);
-Route::delete('/task/{id}', [TaskController::class, 'destroy']);
+Route::resource('task', TaskController::class);
+// Route::get('/task', [TaskController::class, 'index']);
+// Route::post('/task', [TaskController::class, 'store']);
+// Route::get('/task/edit/{id}', [TaskController::class, 'edit']);
+// Route::put('/task/{id}', [TaskController::class, 'update']);
+// Route::delete('/task/{id}', [TaskController::class, 'destroy']);
+
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{user:username}', [UserController::class, 'show'])->name('user.show');

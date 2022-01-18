@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\TaskRequest;
 
 use Illuminate\Http\Request;
 
@@ -16,8 +17,9 @@ class TaskController extends Controller
         return view('task.index', compact('task'));
     }
 
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
+
         $data = ['task' => $request->task, 'mark'=> rand(0,1)];
         // $insert = Task::insert($data); //ini akan return true or false
         $insert = Task::create($data); //ini akan return data inputannya tapi nanti di modelnya harus ditambahin variable protected $guarded = [];
