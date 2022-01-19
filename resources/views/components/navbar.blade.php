@@ -16,6 +16,28 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item dropdown ">
+                    @auth {{-- @if(Auth::check()) --}}
+                    {{-- kalo misalnya if anda adalah orang yg belum login (tamu), maka @auth diganti dengan @guest (liat yang bawah) --}}
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{Auth::user()->name}}
+                    </a>
+                    @else
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Menu
+                    </a>
+                    @endauth {{-- @endif --}}
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        @guest
+                        <li><a class="dropdown-item" href="{{route('register')}}">Register</a></li>
+                        <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
+                        @else
+                        <li><a class="dropdown-item" href="{{route('login')}}">Logout</a></li>
+                        @endguest
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
