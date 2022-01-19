@@ -10,6 +10,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController; 
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 
 // // Route::get('/', function () {
 // //     // penggunaan compact : compact key value nya harus sama, misalnya :
@@ -46,6 +47,8 @@ Route::resource('task', TaskController::class)->middleware('auth');
 // Route::get('/task/edit/{id}', [TaskController::class, 'edit']);
 // Route::put('/task/{id}', [TaskController::class, 'update']);
 // Route::delete('/task/{id}', [TaskController::class, 'destroy']);
+
+Route::post('logout', LogoutController::class)->middleware('auth');
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{user:username}', [UserController::class, 'show'])->name('user.show');

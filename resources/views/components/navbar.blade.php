@@ -33,7 +33,10 @@
                         <li><a class="dropdown-item" href="{{route('register')}}">Register</a></li>
                         <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
                         @else
-                        <li><a class="dropdown-item" href="{{route('login')}}">Logout</a></li>
+                        <form action="logout" method="post">
+                            @csrf
+                            <li><input type="submit" value="Logout"></li>
+                        </form>
                         @endguest
                     </ul>
                 </li>
