@@ -48,7 +48,7 @@ Route::resource('task', TaskController::class)->middleware('auth');
 // Route::put('/task/{id}', [TaskController::class, 'update']);
 // Route::delete('/task/{id}', [TaskController::class, 'destroy']);
 
-Route::post('logout', LogoutController::class)->middleware('auth');
+Route::post('logout', LogoutController::class)->middleware('auth')->name('logout');
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{user:username}', [UserController::class, 'show'])->name('user.show');
